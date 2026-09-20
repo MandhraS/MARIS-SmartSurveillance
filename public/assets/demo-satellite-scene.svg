@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <!-- Background Ocean Radar Backscatter Noise Texture -->
+    <filter id="sar-noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
+      <feColorMatrix type="matrix" values="0.15 0 0 0 0.05   0 0.18 0 0 0.08   0 0 0.22 0 0.12  0 0 0 1 0" />
+    </filter>
+
+    <!-- Radar Grid Pattern -->
+    <pattern id="radar-grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(56, 189, 248, 0.07)" stroke-width="1"/>
+      <circle cx="0" cy="0" r="1.5" fill="rgba(56, 189, 248, 0.2)"/>
+    </pattern>
+
+    <!-- Oil Slick Low-Backscatter Blur Filter -->
+    <filter id="slick-blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" />
+    </filter>
+  </defs>
+
+  <!-- Base Marine SAR Ocean Surface -->
+  <rect width="800" height="600" fill="#08101e" />
+  <rect width="800" height="600" filter="url(#sar-noise)" opacity="0.85" />
+  <rect width="800" height="600" fill="url(#radar-grid)" />
+
+  <!-- Subtle Ocean Wave Swell Lines (SAR backscatter variation) -->
+  <g stroke="rgba(14, 165, 233, 0.06)" stroke-width="1.5" fill="none">
+    <path d="M-50,120 Q150,110 350,130 T750,125 T1150,130" />
+    <path d="M-50,180 Q150,170 350,190 T750,185 T1150,190" />
+    <path d="M-50,240 Q150,230 350,250 T750,245 T1150,250" />
+    <path d="M-50,300 Q150,290 350,310 T750,305 T1150,310" />
+    <path d="M-50,360 Q150,350 350,370 T750,365 T1150,370" />
+    <path d="M-50,420 Q150,410 350,430 T750,425 T1150,430" />
+    <path d="M-50,480 Q150,470 350,490 T750,485 T1150,490" />
+  </g>
+
+  <!-- NATURAL SATELLITE OIL SLICK ANOMALY (Low Backscatter Dark Patch) -->
+  <!-- Low roughness due to oil dampening capillary waves creates dark patch on radar -->
+  <g filter="url(#slick-blur)">
+    <!-- Deepest slick core -->
+    <path d="M 320,240 
+             C 380,210 460,225 520,270 
+             C 560,300 580,350 540,395 
+             C 500,435 430,420 370,410 
+             C 310,400 270,360 260,310 
+             C 255,275 285,255 320,240 Z" 
+          fill="#02050b" opacity="0.95" />
+
+    <!-- Trailing lighter sheen feathering -->
+    <path d="M 300,220 
+             C 390,190 490,210 555,260 
+             C 610,300 625,370 575,420 
+             C 525,465 430,450 350,435 
+             C 280,420 240,370 235,300 
+             C 230,250 260,235 300,220 Z" 
+          fill="#030914" opacity="0.75" />
+
+    <!-- Dispersed finger droplets -->
+    <path d="M 540,260 Q 590,240 615,270 Q 585,290 540,275 Z" fill="#030813" opacity="0.8" />
+    <path d="M 360,420 Q 380,470 410,485 Q 425,450 385,425 Z" fill="#030813" opacity="0.7" />
+  </g>
+
+  <!-- SUSPECT VESSEL POINT TARGET & TURBULENT WAKE (MV Ocean Star) -->
+  <!-- Kelvin Wake Pattern behind vessel -->
+  <g stroke="rgba(255, 255, 255, 0.25)" stroke-width="1.2" fill="none">
+    <!-- Divergent wake arms -->
+    <line x1="390" y1="365" x2="220" y2="465" stroke-dasharray="4,3" stroke="rgba(255,255,255,0.2)"/>
+    <line x1="390" y1="365" x2="270" y2="495" stroke-dasharray="4,3" stroke="rgba(255,255,255,0.15)"/>
+    <!-- Turbulent centerline wake -->
+    <line x1="390" y1="365" x2="245" y2="480" stroke-width="2" stroke="rgba(255,255,255,0.3)"/>
+  </g>
+
+  <!-- Vessel Metallic Double-Bounce Radar Return (Bright White/Yellow Point Target) -->
+  <g transform="translate(390, 365)">
+    <!-- Vessel Radar Bloom -->
+    <circle cx="0" cy="0" r="14" fill="rgba(255, 255, 255, 0.15)" />
+    <circle cx="0" cy="0" r="7" fill="rgba(255, 255, 255, 0.45)" />
+    <polygon points="-4,-7 10,-2 7,4 -7,-1" fill="#ffffff" stroke="#38bdf8" stroke-width="0.8" />
+    <!-- Secondary radar sidelobe artifact -->
+    <circle cx="8" cy="-2" r="1.5" fill="#fef08a" />
+  </g>
+
+  <!-- SECONDARY MARITIME VESSEL (Trawler at safe distance) -->
+  <g transform="translate(680, 140)">
+    <circle cx="0" cy="0" r="4" fill="rgba(255,255,255,0.3)" />
+    <circle cx="0" cy="0" r="2" fill="#ffffff" />
+    <line x1="0" y1="0" x2="-40" y2="-15" stroke="rgba(255,255,255,0.15)" stroke-dasharray="2,2"/>
+  </g>
+
+  <!-- SATELLITE SAR RETICLE & TELEMETRY OVERLAYS -->
+  <g font-family="monospace" font-size="11" fill="#94a3b8">
+    <!-- Corner Framing Crosshairs -->
+    <path d="M 25,45 L 25,25 L 45,25" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+    <path d="M 775,45 L 775,25 L 755,25" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+    <path d="M 25,555 L 25,575 L 45,575" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+    <path d="M 775,555 L 775,575 L 755,575" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+
+    <!-- Center Radar Crosshair -->
+    <g stroke="rgba(56, 189, 248, 0.3)" stroke-width="1" fill="none">
+      <circle cx="400" cy="300" r="80" stroke-dasharray="4,4"/>
+      <circle cx="400" cy="300" r="160" stroke-dasharray="2,6"/>
+      <line x1="400" y1="120" x2="400" y2="480" stroke-dasharray="3,3"/>
+      <line x1="220" y1="300" x2="580" y2="300" stroke-dasharray="3,3"/>
+    </g>
+
+    <!-- Top Telemetry Header -->
+    <rect x="35" y="32" width="410" height="24" fill="#070e1b" rx="2" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1"/>
+    <text x="45" y="48" fill="#38bdf8" font-weight="bold">ESA SENTINEL-1A C-SAR • VV POLARIZATION</text>
+    <text x="325" y="48" fill="#94a3b8">ORBIT #48210</text>
+
+    <!-- Coordinate Marks -->
+    <text x="45" y="565" fill="#38bdf8" font-size="10">FOV: 18.925°N, 71.650°E</text>
+    <text x="210" y="565" fill="#64748b" font-size="10">SECTOR BRAVO • ARABIAN SEA</text>
+    <text x="630" y="565" fill="#38bdf8" font-size="10">RES: 10m/px</text>
+
+    <!-- Scale Bar -->
+    <line x1="650" y1="42" x2="740" y2="42" stroke="#ffffff" stroke-width="2"/>
+    <line x1="650" y1="38" x2="650" y2="46" stroke="#ffffff" stroke-width="1.5"/>
+    <line x1="740" y1="38" x2="740" y2="46" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="675" y="35" fill="#ffffff" font-size="9">5.0 NM</text>
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+[
+  {
+    "vesselId": "MV-OCEAN-STAR",
+    "vesselName": "MV Ocean Star",
+    "vesselType": "Tanker",
+    "latitude": 18.79,
+    "longitude": 71.51,
+    "speedKnots": 13.4,
+    "heading": 214,
+    "timestamp": "08 Sep 2026, 21:42 IST",
+    "status": "Underway Using Engine",
+    "isProbableSource": true
+  },
+  {
+    "vesselId": "MT-SEA-GLORY",
+    "vesselName": "MT Sea Glory",
+    "vesselType": "Tanker",
+    "latitude": 19.25,
+    "longitude": 71.42,
+    "speedKnots": 12.1,
+    "heading": 195,
+    "timestamp": "08 Sep 2026, 21:42 IST",
+    "status": "Underway Using Engine",
+    "isProbableSource": false
+  },
+  {
+    "vesselId": "AL-BAHAR-4",
+    "vesselName": "Al-Bahar 4",
+    "vesselType": "Fishing",
+    "latitude": 18.84,
+    "longitude": 71.95,
+    "speedKnots": 4.2,
+    "heading": 85,
+    "timestamp": "08 Sep 2026, 21:42 IST",
+    "status": "Trawling Operations",
+    "isProbableSource": false
+  }
+]

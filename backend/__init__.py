@@ -1,0 +1,1 @@
+"""MARIS FastAPI prototype backend."""

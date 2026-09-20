@@ -1,0 +1,1 @@
+This directory contains local demonstration data. It is intentionally not live AIS or government data. The JSON files can later be replaced by a PostGIS repository without changing the API response contracts.
